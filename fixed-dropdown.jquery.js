@@ -79,11 +79,15 @@
         };
 
         this.show = function () {
-            this.updateDropdownPosition();
-
             this.dropdown
+                .css({
+                    left:0,
+                    top:0
+                })
                 .removeClass(this.options.classHidden)
                 .addClass(this.options.classShowed);
+
+            this.updateDropdownPosition();
 
             return this;
         };
@@ -103,7 +107,7 @@
                 top:  ep.offsetTop + this.element.outerHeight(),
             };
 
-            if(position.left + this.dropdown.outerWidth() > $(window).width())
+            if(position.left + this.dropdown.outerWidth() > $(window).outerWidth())
                 position.left = ep.offsetLeft - this.dropdown.outerWidth() + ep.width;
 
             this.dropdown.css(position);
